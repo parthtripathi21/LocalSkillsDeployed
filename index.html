@@ -1,14 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/LocalSkillsDeployed/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>localskills</title>
-    <script type="module" crossorigin src="/LocalSkillsDeployed/assets/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/LocalSkillsDeployed/assets/index.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Skill Hub - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- Header / Navbar -->
+  <header class="bg-zinc-800 text-white px-6 py-3 flex justify-between items-center">
+    <span class="font-bold text-lg">LOCAL SKILL HUB</span>
+    <nav class="flex gap-6 font-semibold">
+      <a href="index.html" class="hover:text-yellow-400">Home</a>
+      <a href="listings.html" class="hover:text-yellow-400">Categories</a>
+      <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto py-6 px-4">
+    <!-- Add Listing Box -->
+    <section class="mb-8">
+      <div class="max-w-xl">
+        <form
+          id="add-listing-form"
+          class="bg-white/80 backdrop-blur-lg border border-gray-200 p-6 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl"
+        >
+          <h2 class="text-2xl font-bold mb-5 text-gray-800 flex items-center gap-2">
+            <span class="text-blue-600 text-3xl">➕</span> Post a New Skill Listing
+          </h2>
+
+          <div class="flex flex-col gap-4">
+            <div>
+              <label class="text-gray-700 font-semibold">Title</label>
+              <input
+                name="title"
+                class="mt-1 border border-gray-300 rounded-lg w-full px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="e.g. Guitar Classes"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="text-gray-700 font-semibold">Description</label>
+              <textarea
+                name="description"
+                class="mt-1 border border-gray-300 rounded-lg w-full px-3 py-2 h-24 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="Short description of your skill"
+                required
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="text-gray-700 font-semibold">Location</label>
+              <input
+                name="location"
+                class="mt-1 border border-gray-300 rounded-lg w-full px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="e.g. Ajmer"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="text-gray-700 font-semibold">Price (₹)</label>
+              <input
+                name="price"
+                type="number"
+                class="mt-1 border border-gray-300 rounded-lg w-full px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="e.g. 500"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="text-gray-700 font-semibold">Category</label>
+              <input
+                name="category"
+                class="mt-1 border border-gray-300 rounded-lg w-full px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="e.g. Music, Education, Home Services"
+                required
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 hover:scale-[1.02] transition-all duration-200 shadow-md"
+          >
+            Add Listing
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Listings Grid -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4">🔍 Available Skill Listings</h2>
+      <div id="dashboard-list" class="flex flex-wrap gap-4"></div>
+      <p id="dashboard-empty" class="text-gray-600 text-lg hidden">No listings yet.</p>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
